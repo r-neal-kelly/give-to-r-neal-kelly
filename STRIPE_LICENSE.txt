@@ -1,3 +1,5 @@
+https://github.com/stripe-samples/github-pages-stripe-checkout
+
 MIT License
 
 Copyright (c) 2020 Stripe, Inc. (https://stripe.com)

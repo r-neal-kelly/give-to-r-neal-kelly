@@ -1,0 +1,3 @@
+Copyright © 2021 r-neal-kelly
+
+Please see the original STRIPE_LICENSE.txt also.
