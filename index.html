@@ -3,12 +3,13 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Donation Options</title>
   <meta name="description" content="You can give donations to r-neal-kelly" />
 
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <title>Donate a Gift</title>
+
   <link rel="stylesheet" href="css/normalize.css" />
   <link rel="stylesheet" href="css/global.css" />
+
   <!-- Load Stripe.js on your website. -->
   <script src="https://js.stripe.com/v3/"></script>
 </head>
@@ -22,19 +23,19 @@
       <div class="sr-container">
         <section class="container">
           <h1>One-time Donation</h1>
-          <button data-checkout-mode="payment" data-price-id="sku_GU4JYXyvvRb2sX">
+          <button data-checkout-mode="payment" data-price-id="price_1JQGhXANEfn5pVEYbgMZNvQK">
             Donate $5.00 once
           </button>
-          <button data-checkout-mode="payment" data-price-id="sku_GU4KO8nfdg8G2Z">
+          <button data-checkout-mode="payment" data-price-id="price_1JQGhXANEfn5pVEYyfoxjQoU">
             Donate $15.00 once
           </button>
-          <button data-checkout-mode="payment" data-price-id="sku_GU4LB0wBViiYsm">
+          <button data-checkout-mode="payment" data-price-id="price_1JQGhXANEfn5pVEYvFpO99Cp">
             Donate $50.00 once
           </button>
         </section>
         <section class="container">
           <h1>Recurring Donation</h1>
-          <button data-checkout-mode="subscription" data-price-id="plan_GU4MXg0k0Uv1S6">
+          <button data-checkout-mode="subscription" data-price-id="price_1JQGhXANEfn5pVEYmqet0LN5">
             Donate $20.00 per month
           </button>
         </section>
@@ -51,11 +52,8 @@
   </div>
 
   <script>
-    // Replace with your own publishable key: https://dashboard.stripe.com/test/apikeys
-    var PUBLISHABLE_KEY = 'pk_test_Tr8olTkdFnnJVywwhNPHwnHK00HkHV4tnP';
-    // Replace with the domain you want your users to be redirected back to after payment
-    var DOMAIN = location.href.replace(/[^/]*$/, '');
-
+    // Replace with your own publishable key: https://dashboard.stripe.com/apikeys
+    var PUBLISHABLE_KEY = 'pk_test_51JPwJtANEfn5pVEYI4Qr4OY7qFB11MTcxfM6ProZF8HjZxAsOG8TxceyLPTU9SGFFmJpPX4sBvLr99fJyXJXzIOv00bL402bZU';
     var stripe = Stripe(PUBLISHABLE_KEY);
 
     // Handle any errors from Checkout
@@ -73,15 +71,14 @@
         var items = [{ price: priceId, quantity: 1 }];
 
         // Make the call to Stripe.js to redirect to the checkout page
-        // with the sku or plan ID.
         stripe
           .redirectToCheckout({
             mode: mode,
             lineItems: items,
             successUrl:
-              DOMAIN + 'success.html?session_id={CHECKOUT_SESSION_ID}',
+              `https://r-neal-kelly.github.io/give-to-r-neal-kelly/success.html?session_id={CHECKOUT_SESSION_ID}`,
             cancelUrl:
-              DOMAIN + 'canceled.html?session_id={CHECKOUT_SESSION_ID}',
+              `https://r-neal-kelly.github.io/give-to-r-neal-kelly/canceled.html?session_id={CHECKOUT_SESSION_ID}`,
           })
           .then(handleResult);
       });
